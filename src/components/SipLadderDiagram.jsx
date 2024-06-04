@@ -10,7 +10,7 @@ const SipLadderDiagram = ({ messages }) => {
       </Text>
       <VStack spacing={2}>
         {messages.map((message, index) => (
-          <HStack key={index} justifyContent={message.sender === "A" ? "flex-start" : "flex-end"}>
+          <HStack key={index} justifyContent={message.sender === "A" ? "flex-start" : "flex-end"} width="100%">
             <SipLadderMessage message={message} />
           </HStack>
         ))}
