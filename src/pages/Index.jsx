@@ -26,6 +26,14 @@ const parseSIPMessage = (message) => {
   return parsedMessage;
 };
 
+const parseSIPMessages = (message) => {
+  const messages = message.split("\n").filter((line) => line.trim() !== "");
+  return messages.map((msg, index) => {
+    const [sender, receiver, content] = msg.split(" ");
+    return { sender, receiver, content };
+  });
+};
+
 const Index = () => {
   const [sipMessage, setSipMessage] = useState("");
   const [parsedMessage, setParsedMessage] = useState(null);
@@ -36,7 +44,7 @@ const Index = () => {
     const parsed = parseSIPMessage(sipMessage);
     setParsedMessage(parsed);
 
-    const messages = sipMessage.split("\n").filter((line) => line.trim() !== "");
+    const messages = parseSIPMessages(sipMessage);
     setSipMessages(messages);
   };
 

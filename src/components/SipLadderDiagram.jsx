@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Text, VStack } from "@chakra-ui/react";
+import { Box, Text, VStack, HStack } from "@chakra-ui/react";
 import SipLadderMessage from "./SipLadderMessage";
 
 const SipLadderDiagram = ({ messages }) => {
@@ -10,7 +10,9 @@ const SipLadderDiagram = ({ messages }) => {
       </Text>
       <VStack spacing={2}>
         {messages.map((message, index) => (
-          <SipLadderMessage key={index} message={message} />
+          <HStack key={index} justifyContent={message.sender === "A" ? "flex-start" : "flex-end"}>
+            <SipLadderMessage message={message} />
+          </HStack>
         ))}
       </VStack>
     </Box>
